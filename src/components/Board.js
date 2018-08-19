@@ -6,32 +6,31 @@ export class Board extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            squares: Array(9).fill(null)
+            squares: Array(9).fill(null) //make array of 9 nulls
         }
 
         console.log('BOARDDD state', this.state);
     }
 
-    handleClick(i){
+    handleBtnClick(i){
         // this.setState({squares: })
-        console.log('clicked quare - MSG FROM BOARD ', i);
+        console.log('clicked square - MSG FROM BOARD ', i);
+
+        const squares = this.state.squares.slice(); //immutable copy
+        squares[i] = 'X';
+        this.setState({squares: squares});
+
     }
 
     //now we're passing 2 props from Board to Square, value and onClick
-    //The onClick prop is a function that square can call when clicked.
-    // renderSquare(i){
-    //     return <Square
-    //         value={this.state.squares[i]}
-    //         onSquareClick={() => this.handleSquareClick(i)}
-    //     />
-    // }
+    //The onBtnClick prop is a function that square can call when clicked.
 
     renderSquare(i) {
         return (
             <Square
                 value={this.state.squares[i]} //passing null as initial value
                 // value={i}
-                onClick={() => this.handleClick(i)}
+                onBtnClick={() => this.handleBtnClick(i)}
             />
         );
     }

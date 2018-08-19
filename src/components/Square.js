@@ -8,9 +8,9 @@ export class Square extends React.Component {
     }
 
     render(){
-        //onClick calls parent onClick function that was passed as a prop
+        //onClick calls parent onBtnClick function that was passed as a prop
         return (
-            <button className="square" onClick={() => this.props.onClick()}>
+            <button className="square" onClick={() => this.props.onBtnClick()}>
                 {this.props.value}
             </button>
         );
