@@ -32,7 +32,7 @@ export class Board extends React.Component {
                 // value={i}
                 onBtnClick={() => this.handleBtnClick(i)}
             />
-        );
+        )
     }
 
     render() {
