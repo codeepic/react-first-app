@@ -3,29 +3,29 @@ import {Square} from "./Square";
 
 export class Board extends React.Component {
 
-    constructor(props){
-        super(props);
-        this.state = {
-            squares: Array(9).fill(null), //make array of 9 nulls
-            xIsNext: true
-        }
+    // constructor(props){
+    //     super(props);
+    //     this.state = {
+    //         squares: Array(9).fill(null), //make array of 9 nulls
+    //         xIsNext: true
+    //     }
+    //
+    //     console.log('BOARDDD state', this.state);
+    // }
 
-        console.log('BOARDDD state', this.state);
-    }
-
-    handleBtnClick(i){
-        // this.setState({squares: })
-        console.log('clicked square - MSG FROM BOARD ', i);
-
-        const squares = this.state.squares.slice(); //immutable copy
-        squares[i] = this.state.xIsNext ? 'X' : 'O';
-
-        this.setState({
-            squares: squares,
-            xIsNext: !this.state.xIsNext
-        });
-
-    }
+    // handleBtnClick(i){
+    //     // this.setState({squares: })
+    //     console.log('clicked square - MSG FROM BOARD ', i);
+    //
+    //     const squares = this.state.squares.slice(); //immutable copy
+    //     squares[i] = this.state.xIsNext ? 'X' : 'O';
+    //
+    //     this.setState({
+    //         squares: squares,
+    //         xIsNext: !this.state.xIsNext
+    //     });
+    //
+    // }
 
     //now we're passing 2 props from Board to Square, value and onClick
     //The onBtnClick prop is a function that square can call when clicked.
@@ -33,29 +33,19 @@ export class Board extends React.Component {
     renderSquare(i) {
         return (
             <Square
-                value={this.state.squares[i]} //passing null as initial value
+                value={this.props.squares[i]} //passing null as initial value
                 // value={i}
-                onBtnClick={() => this.handleBtnClick(i)}
+                onBtnClick={() => this.props.onClick(i)}
+                // onBtnClick={() => this.handleBtnClick(i)}
             />
         )
     }
 
     //render function runs on every component state change
     render() {
-        console.log('render fn RUUUNS S');
-        const winner = calculateWinner(this.state.squares);
-        let status;
-
-        if(winner){
-            status = 'Winner is ' + winner;
-        }else{
-            status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
-        }
-
         return (
             <div>
 
-                <div className="status">{status}</div>
                 <div className="board">
                     <div className="board-row">
                         {this.renderSquare(0)}
@@ -79,7 +69,7 @@ export class Board extends React.Component {
     }
 }
 
-function calculateWinner(squares) {
+export function calculateWinner(squares) {
     const lines = [
         [0, 1, 2],
         [3, 4, 5],
