@@ -1,9 +1,11 @@
 // functional component - easier way to write components that don't have their
 // own state
+import React from "react";
+
 export function Square(props){
     return (
-        <button className="square" onClick={props.onBtnCLick}>
+        <span className="square" onClick={props.onBtnClick}>
             {props.value}
-        </button>
+        </span>
     );
 }

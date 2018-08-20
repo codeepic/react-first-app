@@ -1,12 +1,32 @@
-.square{
-    padding: 20px;
-    border: 1px solid #fff745;
-    background: #be911c;
-    margin: 4px;
+body {
+    font: 14px "Century Gothic", Futura, sans-serif;
+    margin: 20px;
 }
+
 
 .board{
     margin: 20px;
     padding: 20px;
     border: 2px solid #000;
+}
+
+.board-row:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.square {
+    background: #fff;
+    border: 1px solid #999;
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    height: 34px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 34px;
 }

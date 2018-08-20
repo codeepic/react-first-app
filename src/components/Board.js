@@ -6,7 +6,8 @@ export class Board extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            squares: Array(9).fill(null) //make array of 9 nulls
+            squares: Array(9).fill(null), //make array of 9 nulls
+            xIsNext: true
         }
 
         console.log('BOARDDD state', this.state);
@@ -17,8 +18,12 @@ export class Board extends React.Component {
         console.log('clicked square - MSG FROM BOARD ', i);
 
         const squares = this.state.squares.slice(); //immutable copy
-        squares[i] = 'X';
-        this.setState({squares: squares});
+        squares[i] = this.state.xIsNext ? 'X' : 'O';
+
+        this.setState({
+            squares: squares,
+            xIsNext: !this.state.xIsNext
+        });
 
     }
 
@@ -36,7 +41,7 @@ export class Board extends React.Component {
     }
 
     render() {
-        const status = 'Next player: Xavier';
+        const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
 
         return (
             <div>
