@@ -40,11 +40,21 @@ export class Board extends React.Component {
         )
     }
 
+    //render function runs on every component state change
     render() {
-        const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+        console.log('render fn RUUUNS S');
+        const winner = calculateWinner(this.state.squares);
+        let status;
+
+        if(winner){
+            status = 'Winner is ' + winner;
+        }else{
+            status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
+        }
 
         return (
             <div>
+
                 <div className="status">{status}</div>
                 <div className="board">
                     <div className="board-row">
@@ -67,4 +77,24 @@ export class Board extends React.Component {
 
         );
     }
+}
+
+function calculateWinner(squares) {
+    const lines = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
+    for (let i = 0; i < lines.length; i++) {
+        const [a, b, c] = lines[i];
+        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+            return squares[a];
+        }
+    }
+    return null;
 }
