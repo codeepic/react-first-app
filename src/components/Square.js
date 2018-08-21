@@ -4,7 +4,7 @@ import React from "react";
 
 export function Square(props){
     return (
-        <span className="square" onClick={props.onBtnClick}>
+        <span className={props.isLastMove ? 'square last-move' : 'square'} onClick={props.onBtnClick}>
             {props.value}
         </span>
     );

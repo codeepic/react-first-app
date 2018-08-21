@@ -5,38 +5,24 @@ export class Board extends React.Component {
 
     // constructor(props){
     //     super(props);
-    //     this.state = {
-    //         squares: Array(9).fill(null), //make array of 9 nulls
-    //         xIsNext: true
-    //     }
     //
-    //     console.log('BOARDDD state', this.state);
+    //     this.state = {
+    //         lastMoveIndex: null
+    //     }
     // }
 
     // handleBtnClick(i){
-    //     // this.setState({squares: })
-    //     console.log('clicked square - MSG FROM BOARD ', i);
-    //
-    //     const squares = this.state.squares.slice(); //immutable copy
-    //     squares[i] = this.state.xIsNext ? 'X' : 'O';
-    //
-    //     this.setState({
-    //         squares: squares,
-    //         xIsNext: !this.state.xIsNext
-    //     });
-    //
+    //     // this.setState({lastMoveIndex: i});
+    //     this.props.onClick(i)
     // }
-
-    //now we're passing 2 props from Board to Square, value and onClick
-    //The onBtnClick prop is a function that square can call when clicked.
 
     renderSquare(i) {
         return (
             <Square
-                value={this.props.squares[i]} //passing null as initial value
-                // value={i}
-                onBtnClick={() => this.props.onClick(i)}
+                isLastMove = {this.props.lastMoveIndex === i}
+                value={this.props.squares[i]}
                 // onBtnClick={() => this.handleBtnClick(i)}
+                onBtnClick={() => this.props.onClick(i)}
             />
         )
     }

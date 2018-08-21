@@ -30,3 +30,12 @@ body {
     text-align: center;
     width: 34px;
 }
+
+.winner{
+    background: pink;
+    color: rebeccapurple;
+}
+
+.last-move{
+    background: yellow
+}
