@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Board, calculateWinner} from "./Board";
+import {GameInfo} from "./GameInfo";
 
 
 export class Game extends React.Component{
@@ -104,8 +105,12 @@ export class Game extends React.Component{
 
                 {showWinningSquares()}
 
-                <div className="game-info">
-                    <div className={winnerObj ? 'winner' : 'status'}>{status}</div>
+                <GameInfo
+                    winnerObj={winnerObj}
+                    status={status}
+                />
+
+                <div className="moves">
                     <ol>{moves}</ol>
                 </div>
 
