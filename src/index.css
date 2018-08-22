@@ -39,3 +39,7 @@ body {
 .last-move{
     background: yellow
 }
+
+.game-info{
+    border: 1px solid dodgerblue;
+}

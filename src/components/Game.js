@@ -54,7 +54,7 @@ export class Game extends React.Component{
     render(){
         const history = this.state.history;
         const current = history[this.state.stepNumber];
-        const winner = calculateWinner(current.squares);
+        const winnerObj = calculateWinner(current.squares);
 
         const lastMoveIndex = this.calculateLastMoveIndex(current, history[this.state.stepNumber -1]);
 
@@ -72,11 +72,22 @@ export class Game extends React.Component{
         });
 
 
-        let status;
-        if (winner) {
-            status = 'Winner: ' + winner;
+        let status,
+            winningSquares;
+
+        if (winnerObj) {
+            status = 'Winner: ' + winnerObj.winner;
+            winningSquares = winnerObj.squares;
         } else {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+        }
+
+        function showWinningSquares(){
+            if(winningSquares){
+                return <p>Winning Squares are {winningSquares}</p>
+            }else{
+                return null;
+            }
         }
 
         return (
@@ -90,10 +101,13 @@ export class Game extends React.Component{
                     />
                 </div>
 
+                {showWinningSquares()}
+
                 <div className="game-info">
-                    <div className={winner ? 'winner' : 'status'}>{status}</div>
+                    <div className={winnerObj ? 'winner' : 'status'}>{status}</div>
                     <ol>{moves}</ol>
                 </div>
+
             </div>
         );
     }
