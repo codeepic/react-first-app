@@ -31,14 +31,21 @@ body {
     width: 34px;
 }
 
+.square.last-move{
+    background: yellow
+}
+
+.square.winning{
+    color: red;
+    /*background: red;*/
+    /*border: 2px solid blue;*/
+}
+
 .winner{
     background: pink;
     color: rebeccapurple;
 }
 
-.last-move{
-    background: yellow
-}
 
 .game-info{
     border: 1px solid dodgerblue;

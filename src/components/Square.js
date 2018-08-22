@@ -3,8 +3,20 @@
 import React from "react";
 
 export function Square(props){
+    function getClasses() {
+        let s = 'square';
+
+        if(props.isLastMove)
+            s +=' last-move';
+
+        if(props.isWinningSquare)
+            s += ' winning';
+
+        return s;
+    }
+
     return (
-        <span className={props.isLastMove ? 'square last-move' : 'square'} onClick={props.onBtnClick}>
+        <span className={getClasses()} onClick={props.onBtnClick}>
             {props.value}
         </span>
     );

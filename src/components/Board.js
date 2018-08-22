@@ -17,8 +17,11 @@ export class Board extends React.Component {
     // }
 
     renderSquare(i) {
+        const isWinningSquare = this.props.winningSquares && this.props.winningSquares.indexOf(i) !== -1;
+
         return (
             <Square
+                isWinningSquare = {isWinningSquare}
                 isLastMove = {this.props.lastMoveIndex === i}
                 value={this.props.squares[i]}
                 // onBtnClick={() => this.handleBtnClick(i)}
